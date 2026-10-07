@@ -1,0 +1,233 @@
+/*
+ * App shell layout.
+ *
+ * Two columns: a Stat-Vegas sidebar and a main column that holds the top bar
+ * and page content. Only the shell's own layout classes live here; the
+ * reusable .card / .button / .input classes stay in src/styles/global.css.
+ *
+ * Below the breakpoint the sidebar moves above the content and the three
+ * attraction placeholder cards stack (Controls, Simulation Results, Theory).
+ */
+
+/* --- Page frame --------------------------------------------------------- */
+
+.app-shell {
+  --font-serif: Georgia, 'Times New Roman', serif;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+/* --- Sidebar ------------------------------------------------------------ */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) var(--space-4);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.sidebar__brand {
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar__brand-name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 36px;
+  line-height: 1.05;
+  color: var(--color-accent);
+}
+
+.sidebar__brand-subtitle {
+  margin: var(--space-1) 0 0;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.sidebar__group {
+  margin-top: var(--space-5);
+}
+
+.sidebar__group-label {
+  margin: 0 0 var(--space-2);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.sidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* Sidebar links reserve the left stripe width so selection does not shift. */
+.sidebar__link {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-left: 3px solid transparent;
+  border-radius: 0 var(--space-2) var(--space-2) 0;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 15px;
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  transition: background-color var(--transition-fast);
+}
+
+.sidebar__link:hover {
+  background: var(--color-surface-raised);
+}
+
+/* Selected item: subtle gold-tinted background, gold stripe and bold text. */
+.sidebar__link--selected {
+  background: rgba(216, 180, 90, 0.14);
+  border-left-color: var(--color-accent);
+  font-weight: 600;
+}
+
+.sidebar__note {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* --- Main column -------------------------------------------------------- */
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topbar__tagline {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.app-content {
+  padding: var(--space-5);
+  min-width: 0;
+}
+
+/* --- Attraction placeholder view ---------------------------------------- */
+
+.attraction-view {
+  min-width: 0;
+}
+
+.attraction-view__title {
+  margin: 0;
+  font-size: 26px;
+  color: var(--color-text);
+}
+
+.attraction-view__topic {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+}
+
+.attraction-view__badge {
+  display: inline-block;
+  margin: var(--space-3) 0 0;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--space-4);
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.placeholder-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* --- Responsive: sidebar above content, single column, cards stacked ---- */
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Compact, wrapping navigation instead of a tall list. */
+  .sidebar__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .sidebar__group {
+    margin-top: 0;
+  }
+
+  .sidebar__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sidebar__link {
+    width: auto;
+    min-height: 40px;
+    border-left: none;
+    border-radius: var(--space-2);
+  }
+
+  .topbar {
+    display: none;
+  }
+
+  .placeholder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+

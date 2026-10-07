@@ -1,0 +1,414 @@
+/*
+ * Roulette feature styles.
+ *
+ * Feature-scoped classes only (roulette__*). They reuse the shared design
+ * tokens, the global .card/.button/.input classes and the shared panels, so the
+ * dark-green/gold look and the shell are unchanged. Layout is a responsive grid
+ * of the three main panels (Controls, Simulation Results, Theory).
+ */
+
+.roulette {
+  min-width: 0;
+}
+
+/* Three panels side by side; the results column is wider for the chart and
+   stacks progressively on narrow screens. */
+.roulette__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  align-items: start;
+}
+
+.roulette__grid > * {
+  min-width: 0;
+}
+
+/* --- Controls ----------------------------------------------------------- */
+
+.roulette__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.roulette__intro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.roulette__note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.roulette__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.roulette__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.roulette__help {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.roulette__error {
+  margin: 0;
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.roulette__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* --- Progress ----------------------------------------------------------- */
+
+.roulette__progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.roulette__progress-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.roulette__progress progress {
+  width: 100%;
+}
+
+/* --- Results ------------------------------------------------------------ */
+
+.roulette__empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.roulette__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Run metadata (event, n, N, total spins, seed) for the displayed result. */
+.roulette__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: 14px;
+}
+
+.roulette__meta dt {
+  color: var(--color-text-muted);
+}
+
+.roulette__meta dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.roulette__stale,
+.roulette__status {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--space-2);
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.roulette__error-banner {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-negative);
+  border-radius: var(--space-2);
+  background: var(--color-surface-raised);
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.roulette__groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.roulette__group-title {
+  margin: 0 0 var(--space-2);
+  font-size: 15px;
+  color: var(--color-accent);
+}
+
+/* Metrics wrap instead of forcing narrow columns. */
+.roulette__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-2);
+}
+
+.roulette__hits {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* --- Outcome sample chips ----------------------------------------------- */
+
+.roulette__sample-title {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.roulette__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roulette__chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--space-2);
+  border: 1px solid var(--color-border);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.roulette__chip-number {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.roulette__chip-colour {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Colour fills use the existing tokens. The colour name text carries meaning,
+   so colour is never the only label. */
+.roulette__chip--red {
+  background: var(--color-negative);
+  color: var(--color-on-accent);
+  border-color: var(--color-negative);
+}
+
+.roulette__chip--green {
+  background: var(--color-positive);
+  color: var(--color-on-accent);
+  border-color: var(--color-positive);
+}
+
+.roulette__chip--black {
+  background: #000000;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/* --- View switch (Event count / Waiting time) --------------------------- */
+
+.roulette__viewswitch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.roulette__viewswitch-button {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.roulette__viewswitch-button--active {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+}
+
+.roulette__viewswitch-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --- Count-distribution chart ------------------------------------------- */
+
+/* Stack of normal-flow regions: heading → plot → x-label → legend → caption. */
+.roulette__chart-block {
+  margin: 0;
+  min-width: 0;
+}
+
+.roulette__chart-axis-title {
+  display: block;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Fixed-height, shrinkable parent for ResponsiveContainer. */
+.roulette__chart {
+  width: 100%;
+  height: 300px;
+  min-width: 0;
+}
+
+.roulette__chart-axis-label {
+  margin: var(--space-2) 0 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.roulette__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roulette__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+/* Solid swatch for bar/line series. */
+.roulette__legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+/* Dashed swatch distinguishes the Poisson series without relying on color. */
+.roulette__legend-swatch--dashed {
+  width: 16px;
+  height: 0;
+  border-radius: 0;
+  border-top: 2px dashed;
+  background: none;
+}
+
+.roulette__chart-caption {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* --- Theory ------------------------------------------------------------- */
+
+
+.roulette__theory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.roulette__theory p {
+  margin: 0;
+}
+
+.roulette__subheading {
+  margin: var(--space-2) 0 0;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.roulette__assumptions {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.roulette__assumptions li {
+  margin-bottom: var(--space-1);
+}
+
+/* Formula wrappers: restrained vertical margins and horizontal scroll for wide
+   expressions so they never cause page overflow. */
+.roulette__formula-block {
+  margin: var(--space-2) 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.roulette__formula-block .formula--display {
+  display: block;
+}
+
+.roulette__formula-block .katex {
+  color: var(--color-text);
+  font-size: 1.05em;
+}
+
+/* --- Responsive: two columns, then a single stacked column -------------- */
+
+@media (max-width: 1100px) {
+  .roulette__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile order stays Controls, Results, Theory (DOM order). */
+@media (max-width: 720px) {
+  .roulette__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roulette__chip {
+    transition: none;
+  }
+}

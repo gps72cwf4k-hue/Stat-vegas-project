@@ -1,0 +1,279 @@
+/*
+ * Monty Hall feature styles.
+ *
+ * Feature-scoped classes only (monty-hall__*). They reuse the shared design
+ * tokens, the global .card/.button/.input classes and the shared panels, so the
+ * dark-green/gold look and the shell are unchanged. Layout is a responsive grid
+ * of the three main panels (Controls, Simulation Results, Theory).
+ */
+
+.monty-hall {
+  min-width: 0;
+}
+
+/* Three panels side by side; stacks progressively on narrow screens. */
+.monty-hall__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.monty-hall__grid > * {
+  min-width: 0;
+}
+
+/* --- Controls ----------------------------------------------------------- */
+
+.monty-hall__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.monty-hall__intro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.monty-hall__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.monty-hall__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.monty-hall__help {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.monty-hall__error {
+  margin: 0;
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.monty-hall__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* --- Results ------------------------------------------------------------ */
+
+.monty-hall__empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.monty-hall__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Run metadata (experiment count and seed) for the displayed result. */
+.monty-hall__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: 14px;
+}
+
+.monty-hall__meta dt {
+  color: var(--color-text-muted);
+}
+
+.monty-hall__meta dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.monty-hall__stale {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--space-2);
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.monty-hall__groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.monty-hall__group {
+  min-width: 0;
+}
+
+.monty-hall__group-title {
+  margin: 0 0 var(--space-2);
+  font-size: 15px;
+  color: var(--color-accent);
+}
+
+/* Metrics wrap instead of forcing three narrow columns. */
+.monty-hall__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-2);
+}
+
+.monty-hall__wins {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* --- Comparison chart --------------------------------------------------- */
+
+/* Stack of regions in normal flow: heading → chart → Strategy → legend. */
+.monty-hall__chart-block {
+  margin: 0;
+  min-width: 0;
+}
+
+.monty-hall__chart-axis-title {
+  display: block;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Fixed-height, shrinkable parent for ResponsiveContainer. */
+.monty-hall__chart {
+  width: 100%;
+  height: 260px;
+  min-width: 0;
+}
+
+.monty-hall__chart-strategy {
+  margin: var(--space-2) 0 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.monty-hall__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.monty-hall__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+/* Decorative color swatch; the visible text label carries the meaning. */
+.monty-hall__legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.monty-hall__chart-caption {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* --- Theory ------------------------------------------------------------- */
+
+.monty-hall__theory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.monty-hall__theory p {
+  margin: 0;
+}
+
+.monty-hall__formula {
+  font-family: var(--font-mono);
+  color: var(--color-text);
+}
+
+.monty-hall__subheading {
+  margin: var(--space-2) 0 0;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.monty-hall__assumptions {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.monty-hall__assumptions li {
+  margin-bottom: var(--space-1);
+}
+
+/* Formula wrappers: restrained vertical margins and horizontal scroll for
+   wide expressions so they never cause page overflow. */
+.monty-hall__formula-block {
+  margin: var(--space-2) 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* KaTeX inherits the app text color; settle spacing for display formulas. */
+.monty-hall__formula-block .formula--display {
+  display: block;
+}
+
+.monty-hall__formula-block .katex {
+  color: var(--color-text);
+  font-size: 1.05em;
+}
+
+/* --- Responsive: two columns, then a single stacked column ------------- */
+
+@media (max-width: 1100px) {
+  .monty-hall__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile order stays Controls, Simulation Results, Theory (DOM order). */
+@media (max-width: 720px) {
+  .monty-hall__grid {
+    grid-template-columns: 1fr;
+  }
+}

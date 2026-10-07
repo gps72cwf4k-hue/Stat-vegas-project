@@ -1,0 +1,299 @@
+/*
+ * Poker feature styles.
+ *
+ * Feature-scoped classes only (poker__*). They reuse the shared design tokens,
+ * the global .card/.button/.input classes and the shared panels, so the
+ * dark-green/gold look and the shell are unchanged. Layout: a responsive grid of
+ * the Controls and Simulation Results panels, with the exhaustive-verify block
+ * and then the Theory block placed BELOW the grid, spanning the full width.
+ */
+
+.poker {
+  min-width: 0;
+}
+
+/* Controls and Results side by side; the results column is wider for the chart. */
+.poker__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  align-items: start;
+}
+
+.poker__grid > * {
+  min-width: 0;
+}
+
+/* The verify and theory blocks sit BELOW the grid and span the full width. */
+.poker__verify-row,
+.poker__theory-row {
+  display: block;
+  margin-top: var(--space-4);
+}
+
+.poker__verify-row > *,
+.poker__theory-row > * {
+  min-width: 0;
+}
+
+/* --- Controls ----------------------------------------------------------- */
+
+.poker__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.poker__intro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.poker__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.poker__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.poker__help {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.poker__note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.poker__error {
+  margin: 0;
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.poker__stale {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.poker__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* --- Results ------------------------------------------------------------ */
+
+.poker__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.poker__placeholder {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.poker__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-3);
+}
+
+.poker__focus {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.poker__subheading {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.poker__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.poker__table-caption {
+  text-align: left;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  padding-bottom: var(--space-1);
+}
+
+.poker__table th,
+.poker__table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: right;
+}
+
+.poker__table thead th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.poker__table tbody th,
+.poker__table thead th:first-child {
+  text-align: left;
+}
+
+.poker__chisquare,
+.poker__verify {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.poker__classes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.poker__class-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-2) var(--space-3);
+  font-size: 13px;
+}
+
+.poker__class-label {
+  color: var(--color-text);
+}
+
+.poker__class-values {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.poker__verify-confirm {
+  margin: 0;
+  color: var(--color-positive);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* --- Chart -------------------------------------------------------------- */
+
+.poker__chart-block {
+  margin: var(--space-4) 0 0;
+}
+
+.poker__chart-axis-title {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.poker__chart {
+  width: 100%;
+  height: 320px;
+}
+
+.poker__chart-axis-label {
+  margin: var(--space-1) 0 var(--space-2);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.poker__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.poker__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.poker__legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.poker__legend-swatch--marker {
+  background: transparent;
+  border: 2px solid var(--color-negative);
+}
+
+.poker__chart-caption {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* --- Theory ------------------------------------------------------------- */
+
+.poker__theory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.poker__theory p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.poker__formula-block {
+  margin: var(--space-2) 0;
+}
+
+/* --- Responsive: single stacked column ---------------------------------- */
+
+@media (max-width: 1100px) {
+  .poker__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .poker__grid {
+    grid-template-columns: 1fr;
+  }
+}

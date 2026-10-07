@@ -1,0 +1,76 @@
+/*
+ * Shared panel styles.
+ *
+ * Small presentation containers used by the attraction screens (Controls,
+ * Simulation Results, Theory). They combine the global .card class with the
+ * .shared-panel class, so the existing card look is preserved; only the extra
+ * heading/badge/summary and metric bits are added here.
+ *
+ * Only the existing design tokens are used — no global classes are redefined.
+ */
+
+/* --- Panels ------------------------------------------------------------- */
+
+/* Combined with .card; keeps grid children from overflowing their track. */
+.shared-panel {
+  min-width: 0;
+}
+
+.shared-panel__heading {
+  margin: 0 0 var(--space-2);
+  font-size: 16px;
+  color: var(--color-accent);
+}
+
+.shared-panel__summary {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Subtle plain-text badge for a distribution name (e.g. Binomial). */
+.shared-panel__badge {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-4);
+  background: var(--color-surface-raised);
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+/* --- Metric card -------------------------------------------------------- */
+
+.shared-metric {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.shared-metric__list {
+  margin: 0;
+}
+
+.shared-metric__label {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.shared-metric__value {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.shared-metric__description {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+

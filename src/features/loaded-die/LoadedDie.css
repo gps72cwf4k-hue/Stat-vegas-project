@@ -1,0 +1,329 @@
+/*
+ * Loaded Die feature styles.
+ *
+ * Feature-scoped classes only (loaded-die__*). They reuse the shared design
+ * tokens, the global .card/.button/.input classes and the shared panels, so the
+ * dark-green/gold look and the shell are unchanged. Layout mirrors the Roulette
+ * and House Edge features: a responsive grid of the three main panels (Controls,
+ * Simulation Results, Theory).
+ */
+
+.loaded-die {
+  min-width: 0;
+}
+
+/* Three panels side by side; the results column is wider for the charts. */
+.loaded-die__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  align-items: start;
+}
+
+.loaded-die__grid > * {
+  min-width: 0;
+}
+
+/* The Theory block sits BELOW the grid and spans the full content width. */
+.loaded-die__theory-row {
+  display: block;
+  margin-top: var(--space-4);
+}
+
+.loaded-die__theory-row > * {
+  min-width: 0;
+}
+
+/* --- Controls ----------------------------------------------------------- */
+
+.loaded-die__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.loaded-die__intro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.loaded-die__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.loaded-die__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.loaded-die__help {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.loaded-die__error {
+  margin: 0;
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Small informational note (for example the b = 1 edge case). */
+.loaded-die__note {
+  margin: var(--space-1) 0 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface-raised);
+  border-radius: 0 6px 6px 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.loaded-die__mode {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.loaded-die__mode-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.loaded-die__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* --- Progress ----------------------------------------------------------- */
+
+.loaded-die__progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.loaded-die__progress-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.loaded-die__progress progress {
+  width: 100%;
+}
+
+/* --- Results ------------------------------------------------------------ */
+
+.loaded-die__empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.loaded-die__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.loaded-die__stale {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--border-radius, 8px);
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.loaded-die__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: 13px;
+}
+
+.loaded-die__meta dt {
+  color: var(--color-text-muted);
+}
+
+.loaded-die__meta dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.loaded-die__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-3);
+}
+
+/* --- Charts ------------------------------------------------------------- */
+
+.loaded-die__chart-block {
+  margin: 0;
+}
+
+.loaded-die__chart-axis-title {
+  margin: 0 0 var(--space-1);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.loaded-die__chart {
+  width: 100%;
+  height: 240px;
+}
+
+.loaded-die__chart-axis-label {
+  margin: var(--space-1) 0 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.loaded-die__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.loaded-die__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.loaded-die__legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.loaded-die__chart-caption {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* --- Calibration table -------------------------------------------------- */
+
+.loaded-die__calibration {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.loaded-die__calibration caption {
+  caption-side: top;
+  text-align: left;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.loaded-die__calibration th,
+.loaded-die__calibration td {
+  padding: var(--space-1) var(--space-2);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.loaded-die__calibration thead th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.loaded-die__calibration tbody tr.loaded-die__row--dim {
+  opacity: 0.45;
+}
+
+.loaded-die__calibration-note {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+/* --- Theory ------------------------------------------------------------- */
+
+.loaded-die__theory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.loaded-die__theory h3 {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-accent);
+}
+
+.loaded-die__theory p {
+  margin: 0;
+}
+
+.loaded-die__theory ul {
+  margin: 0;
+  padding-left: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.loaded-die__formula-block {
+  overflow-x: auto;
+}
+
+.loaded-die__badges {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+.loaded-die__badge {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* --- Responsive --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .loaded-die__grid {
+    grid-template-columns: 1fr;
+  }
+}

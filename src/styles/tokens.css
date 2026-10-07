@@ -1,0 +1,39 @@
+/*
+ * Design tokens — the single source of truth for colors, spacing and typography.
+ * Every other stylesheet should reference these variables instead of
+ * repeating raw values, so the whole app can be re-themed in one place.
+ */
+
+:root {
+  /* Colors — casino-inspired dark green/black with gold accents. */
+  --color-background: #08110d;
+  --color-surface: #101f18;
+  --color-surface-raised: #172a20;
+  --color-accent: #d8b45a;
+  --color-text: #f3f0e7;
+  --color-text-muted: #b1bdb4;
+  --color-positive: #67d59a;
+  --color-negative: #f07878;
+  --color-border: #34473b;
+
+  /* Text color to place on top of the gold accent (kept dark for contrast). */
+  --color-on-accent: #08110d;
+
+  /* System font stack — no external fonts are downloaded. */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Spacing scale — multiples of 4px. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Shape and motion. */
+  --radius-card: 12px;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --transition-fast: 160ms ease;
+}

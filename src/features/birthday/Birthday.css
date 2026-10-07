@@ -1,0 +1,352 @@
+/*
+ * Birthday Paradox feature styles.
+ *
+ * Feature-scoped classes only (birthday__*). They reuse the shared design tokens,
+ * the global .card/.button/.input classes and the shared panels. Layout mirrors
+ * the other features: a responsive grid of the two main panels (Controls,
+ * Simulation Results), with the Theory block BELOW the grid spanning the full
+ * content width.
+ */
+
+.birthday {
+  min-width: 0;
+}
+
+/* Controls + results; the results column is wider for the charts. */
+.birthday__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.7fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  align-items: start;
+}
+
+.birthday__grid > * {
+  min-width: 0;
+}
+
+/* The Theory block sits BELOW the grid and spans the full content width. */
+.birthday__theory-row {
+  display: block;
+  margin-top: var(--space-4);
+}
+
+.birthday__theory-row > * {
+  min-width: 0;
+}
+
+/* --- Controls ----------------------------------------------------------- */
+
+.birthday__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.birthday__intro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.birthday__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.birthday__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.birthday__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.birthday__radio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.birthday__help {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.birthday__error {
+  margin: 0;
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.birthday__note {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface-raised);
+  border-radius: 0 6px 6px 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.birthday__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* --- Progress ----------------------------------------------------------- */
+
+.birthday__progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.birthday__progress-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.birthday__progress progress {
+  width: 100%;
+}
+
+/* --- Results ------------------------------------------------------------ */
+
+.birthday__empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.birthday__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.birthday__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: 14px;
+}
+
+.birthday__meta dt {
+  color: var(--color-text-muted);
+}
+
+.birthday__meta dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.birthday__stale,
+.birthday__status {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--space-2);
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.birthday__error-banner {
+  margin: var(--space-3) 0 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-negative);
+  border-radius: var(--space-2);
+  background: var(--color-surface-raised);
+  color: var(--color-negative);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.birthday__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+
+.birthday__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.birthday__card-note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* --- Charts ------------------------------------------------------------- */
+
+.birthday__chart-block {
+  margin: 0;
+  min-width: 0;
+}
+
+.birthday__chart-axis-title {
+  display: block;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.birthday__chart {
+  width: 100%;
+  height: 320px;
+  min-width: 0;
+}
+
+.birthday__chart--small {
+  height: 200px;
+}
+
+.birthday__chart-axis-label {
+  margin: var(--space-2) 0 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.birthday__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.birthday__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+.birthday__legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.birthday__legend-swatch--dashed {
+  width: 16px;
+  height: 0;
+  border-radius: 0;
+  border-top: 2px dashed;
+  background: none;
+}
+
+.birthday__legend-swatch--cross {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.birthday__legend-swatch--cross::before {
+  content: '✚';
+}
+
+.birthday__chart-caption {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* --- Theory ------------------------------------------------------------- */
+
+.birthday__theory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.birthday__theory p {
+  margin: 0;
+}
+
+.birthday__subheading {
+  margin: var(--space-2) 0 0;
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+.birthday__assumptions {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.birthday__assumptions li {
+  margin-bottom: var(--space-1);
+}
+
+/* Formula wrappers: horizontal scroll so wide expressions never overflow. */
+.birthday__formula-block {
+  margin: var(--space-2) 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.birthday__formula-block .formula--display {
+  display: block;
+}
+
+.birthday__formula-block .katex {
+  color: var(--color-text);
+  font-size: 1.05em;
+}
+
+/* --- Responsive --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .birthday__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
